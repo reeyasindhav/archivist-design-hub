@@ -55,7 +55,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     (email: string, name?: string, role: User["role"] = "enthusiast") => {
       const next: User = {
         email,
-        name: name?.trim() || email.split("@")[0].replace(/[._-]/g, " "),
+        name: name?.trim() || (email.split("@")[0] ?? "Guest").replace(/[._-]/g, " "),
         role,
       };
       setUser(next);
