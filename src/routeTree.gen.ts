@@ -10,11 +10,88 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as SavedRouteImport } from './routes/saved'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SignupRouteImport } from './routes/signup'
+import { Route as SubmitRouteImport } from './routes/submit'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ArchitectsIndexRouteImport } from './routes/architects/index'
+import { Route as ArchitectsSlugRouteImport } from './routes/architects/$slug'
 import { Route as BuildingsIndexRouteImport } from './routes/buildings.index'
+import { Route as BuildingsSlugRouteImport } from './routes/buildings.$slug'
+import { Route as CollectionsIndexRouteImport } from './routes/collections/index'
+import { Route as CollectionsSlugRouteImport } from './routes/collections/$slug'
+import { Route as JournalIndexRouteImport } from './routes/journal/index'
+import { Route as JournalSlugRouteImport } from './routes/journal/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SavedRoute = SavedRouteImport.update({
+  id: '/saved',
+  path: '/saved',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SubmitRoute = SubmitRouteImport.update({
+  id: '/submit',
+  path: '/submit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArchitectsIndexRoute = ArchitectsIndexRouteImport.update({
+  id: '/architects/',
+  path: '/architects/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArchitectsSlugRoute = ArchitectsSlugRouteImport.update({
+  id: '/architects/$slug',
+  path: '/architects/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BuildingsIndexRoute = BuildingsIndexRouteImport.update({
@@ -22,31 +99,182 @@ const BuildingsIndexRoute = BuildingsIndexRouteImport.update({
   path: '/buildings/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BuildingsSlugRoute = BuildingsSlugRouteImport.update({
+  id: '/buildings/$slug',
+  path: '/buildings/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollectionsIndexRoute = CollectionsIndexRouteImport.update({
+  id: '/collections/',
+  path: '/collections/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollectionsSlugRoute = CollectionsSlugRouteImport.update({
+  id: '/collections/$slug',
+  path: '/collections/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JournalIndexRoute = JournalIndexRouteImport.update({
+  id: '/journal/',
+  path: '/journal/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JournalSlugRoute = JournalSlugRouteImport.update({
+  id: '/journal/$slug',
+  path: '/journal/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
+  '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
+  '/saved': typeof SavedRoute
+  '/settings': typeof SettingsRoute
+  '/signup': typeof SignupRoute
+  '/submit': typeof SubmitRoute
+  '/terms': typeof TermsRoute
+  '/architects/$slug': typeof ArchitectsSlugRoute
+  '/buildings/$slug': typeof BuildingsSlugRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
+  '/journal/$slug': typeof JournalSlugRoute
+  '/architects/': typeof ArchitectsIndexRoute
   '/buildings/': typeof BuildingsIndexRoute
+  '/collections/': typeof CollectionsIndexRoute
+  '/journal/': typeof JournalIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
+  '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
+  '/saved': typeof SavedRoute
+  '/settings': typeof SettingsRoute
+  '/signup': typeof SignupRoute
+  '/submit': typeof SubmitRoute
+  '/terms': typeof TermsRoute
+  '/architects/$slug': typeof ArchitectsSlugRoute
+  '/buildings/$slug': typeof BuildingsSlugRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
+  '/journal/$slug': typeof JournalSlugRoute
+  '/architects': typeof ArchitectsIndexRoute
   '/buildings': typeof BuildingsIndexRoute
+  '/collections': typeof CollectionsIndexRoute
+  '/journal': typeof JournalIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
+  '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
+  '/saved': typeof SavedRoute
+  '/settings': typeof SettingsRoute
+  '/signup': typeof SignupRoute
+  '/submit': typeof SubmitRoute
+  '/terms': typeof TermsRoute
+  '/architects/$slug': typeof ArchitectsSlugRoute
+  '/buildings/$slug': typeof BuildingsSlugRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
+  '/journal/$slug': typeof JournalSlugRoute
+  '/architects/': typeof ArchitectsIndexRoute
   '/buildings/': typeof BuildingsIndexRoute
+  '/collections/': typeof CollectionsIndexRoute
+  '/journal/': typeof JournalIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/buildings/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/dashboard'
+    | '/login'
+    | '/privacy'
+    | '/saved'
+    | '/settings'
+    | '/signup'
+    | '/submit'
+    | '/terms'
+    | '/architects/$slug'
+    | '/buildings/$slug'
+    | '/collections/$slug'
+    | '/journal/$slug'
+    | '/architects/'
+    | '/buildings/'
+    | '/collections/'
+    | '/journal/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/buildings'
-  id: '__root__' | '/' | '/buildings/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/dashboard'
+    | '/login'
+    | '/privacy'
+    | '/saved'
+    | '/settings'
+    | '/signup'
+    | '/submit'
+    | '/terms'
+    | '/architects/$slug'
+    | '/buildings/$slug'
+    | '/collections/$slug'
+    | '/journal/$slug'
+    | '/architects'
+    | '/buildings'
+    | '/collections'
+    | '/journal'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/dashboard'
+    | '/login'
+    | '/privacy'
+    | '/saved'
+    | '/settings'
+    | '/signup'
+    | '/submit'
+    | '/terms'
+    | '/architects/$slug'
+    | '/buildings/$slug'
+    | '/collections/$slug'
+    | '/journal/$slug'
+    | '/architects/'
+    | '/buildings/'
+    | '/collections/'
+    | '/journal/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  DashboardRoute: typeof DashboardRoute
+  LoginRoute: typeof LoginRoute
+  PrivacyRoute: typeof PrivacyRoute
+  SavedRoute: typeof SavedRoute
+  SettingsRoute: typeof SettingsRoute
+  SignupRoute: typeof SignupRoute
+  SubmitRoute: typeof SubmitRoute
+  TermsRoute: typeof TermsRoute
+  ArchitectsSlugRoute: typeof ArchitectsSlugRoute
+  BuildingsSlugRoute: typeof BuildingsSlugRoute
+  CollectionsSlugRoute: typeof CollectionsSlugRoute
+  JournalSlugRoute: typeof JournalSlugRoute
+  ArchitectsIndexRoute: typeof ArchitectsIndexRoute
   BuildingsIndexRoute: typeof BuildingsIndexRoute
+  CollectionsIndexRoute: typeof CollectionsIndexRoute
+  JournalIndexRoute: typeof JournalIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -58,6 +286,90 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/saved': {
+      id: '/saved'
+      path: '/saved'
+      fullPath: '/saved'
+      preLoaderRoute: typeof SavedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/submit': {
+      id: '/submit'
+      path: '/submit'
+      fullPath: '/submit'
+      preLoaderRoute: typeof SubmitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/architects/': {
+      id: '/architects/'
+      path: '/architects'
+      fullPath: '/architects/'
+      preLoaderRoute: typeof ArchitectsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/architects/$slug': {
+      id: '/architects/$slug'
+      path: '/architects/$slug'
+      fullPath: '/architects/$slug'
+      preLoaderRoute: typeof ArchitectsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/buildings/': {
       id: '/buildings/'
       path: '/buildings'
@@ -65,12 +377,64 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BuildingsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/buildings/$slug': {
+      id: '/buildings/$slug'
+      path: '/buildings/$slug'
+      fullPath: '/buildings/$slug'
+      preLoaderRoute: typeof BuildingsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collections/': {
+      id: '/collections/'
+      path: '/collections'
+      fullPath: '/collections/'
+      preLoaderRoute: typeof CollectionsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collections/$slug': {
+      id: '/collections/$slug'
+      path: '/collections/$slug'
+      fullPath: '/collections/$slug'
+      preLoaderRoute: typeof CollectionsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/journal/': {
+      id: '/journal/'
+      path: '/journal'
+      fullPath: '/journal/'
+      preLoaderRoute: typeof JournalIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/journal/$slug': {
+      id: '/journal/$slug'
+      path: '/journal/$slug'
+      fullPath: '/journal/$slug'
+      preLoaderRoute: typeof JournalSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  DashboardRoute: DashboardRoute,
+  LoginRoute: LoginRoute,
+  PrivacyRoute: PrivacyRoute,
+  SavedRoute: SavedRoute,
+  SettingsRoute: SettingsRoute,
+  SignupRoute: SignupRoute,
+  SubmitRoute: SubmitRoute,
+  TermsRoute: TermsRoute,
+  ArchitectsSlugRoute: ArchitectsSlugRoute,
+  BuildingsSlugRoute: BuildingsSlugRoute,
+  CollectionsSlugRoute: CollectionsSlugRoute,
+  JournalSlugRoute: JournalSlugRoute,
+  ArchitectsIndexRoute: ArchitectsIndexRoute,
   BuildingsIndexRoute: BuildingsIndexRoute,
+  CollectionsIndexRoute: CollectionsIndexRoute,
+  JournalIndexRoute: JournalIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

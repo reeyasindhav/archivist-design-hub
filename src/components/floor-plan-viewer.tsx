@@ -34,10 +34,18 @@ export function FloorPlanViewer({
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <Toggle active={labels} onClick={() => setLabels((v) => !v)} icon={<Tag className="size-3.5" />}>
+          <Toggle
+            active={labels}
+            onClick={() => setLabels((v) => !v)}
+            icon={<Tag className="size-3.5" />}
+          >
             Labels
           </Toggle>
-          <Toggle active={dims} onClick={() => setDims((v) => !v)} icon={<Ruler className="size-3.5" />}>
+          <Toggle
+            active={dims}
+            onClick={() => setDims((v) => !v)}
+            icon={<Ruler className="size-3.5" />}
+          >
             Areas
           </Toggle>
           <div className="ml-1 flex items-center border border-border">

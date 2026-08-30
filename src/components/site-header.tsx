@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, Compass } from "lucide-react";
 import { useAuth } from "@/lib/auth";
+import { SignOutConfirm } from "@/components/sign-out-dialog";
 import { cn } from "@/lib/utils";
 
 const nav = [
@@ -65,12 +66,13 @@ export function SiteHeader() {
               >
                 Dashboard
               </Link>
-              <button
-                onClick={signOut}
-                className="bg-primary px-4 py-2 text-[11px] tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-85"
-              >
-                Sign out
-              </button>
+              <SignOutConfirm
+                trigger={
+                  <button className="bg-primary px-4 py-2 text-[11px] tracking-[0.14em] text-primary-foreground uppercase transition-opacity hover:opacity-85">
+                    Sign out
+                  </button>
+                }
+              />
             </>
           ) : (
             <>
@@ -90,11 +92,7 @@ export function SiteHeader() {
           )}
         </div>
 
-        <button
-          className="md:hidden"
-          aria-label="Toggle menu"
-          onClick={() => setOpen((v) => !v)}
-        >
+        <button className="md:hidden" aria-label="Toggle menu" onClick={() => setOpen((v) => !v)}>
           {open ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
       </div>

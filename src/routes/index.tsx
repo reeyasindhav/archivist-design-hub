@@ -41,7 +41,7 @@ function Home() {
     )
     .slice(0, 6);
 
-  const feature = articles[0]!;
+  const feature = articles[0];
 
   return (
     <>
@@ -55,8 +55,8 @@ function Home() {
             that <em className="text-accent italic">shape</em> us.
           </h1>
           <p className="mt-6 max-w-md text-[15px] leading-relaxed text-ink-soft">
-            Explore the ideas, details and stories behind the world's most compelling
-            architecture. A curated atlas for curious minds.
+            Explore the ideas, details and stories behind the world's most compelling architecture.
+            A curated atlas for curious minds.
           </p>
 
           <form
@@ -89,33 +89,29 @@ function Home() {
           </div>
         </div>
 
-        <Reveal delay={120}>
-          <Link
-            to="/journal/$slug"
-            params={{ slug: feature.slug }}
-            className="media-zoom group relative block aspect-4/3 bg-secondary"
-          >
-            <img
-              src={feature.cover}
-              alt={feature.title}
-              className="size-full object-cover"
-            />
-            <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/75 to-transparent p-6 pt-16">
-              <p className="text-[11px] tracking-[0.18em] text-white/70 uppercase">
-                Featured study — 01
-              </p>
-              <div className="mt-1 flex items-end justify-between gap-4">
-                <h2 className="font-display text-2xl text-white lg:text-3xl">
-                  {feature.title}
-                </h2>
-                <ArrowUpRight
-                  className="size-5 text-white transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1"
-                  strokeWidth={1.5}
-                />
+        {feature && (
+          <Reveal delay={120}>
+            <Link
+              to="/journal/$slug"
+              params={{ slug: feature.slug }}
+              className="media-zoom group relative block aspect-4/3 bg-secondary"
+            >
+              <img src={feature.cover} alt={feature.title} className="size-full object-cover" />
+              <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/75 to-transparent p-6 pt-16">
+                <p className="text-[11px] tracking-[0.18em] text-white/70 uppercase">
+                  Featured study — 01
+                </p>
+                <div className="mt-1 flex items-end justify-between gap-4">
+                  <h2 className="font-display text-2xl text-white lg:text-3xl">{feature.title}</h2>
+                  <ArrowUpRight
+                    className="size-5 text-white transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1"
+                    strokeWidth={1.5}
+                  />
+                </div>
               </div>
-            </div>
-          </Link>
-        </Reveal>
+            </Link>
+          </Reveal>
+        )}
       </section>
 
       {/* Collection with era filter tabs */}
@@ -208,8 +204,8 @@ function Home() {
             </div>
             <div>
               <p className="text-[15px] leading-relaxed text-ink-soft">
-                Build a portfolio that shows more than the finished image. Share your
-                process, plans and the thinking that brings a space to life.
+                Build a portfolio that shows more than the finished image. Share your process, plans
+                and the thinking that brings a space to life.
               </p>
               <Link
                 to="/architects"
@@ -223,11 +219,7 @@ function Home() {
           <div className="mt-14 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {architects.slice(0, 4).map((a, i) => (
               <Reveal key={a.slug} delay={i * 70}>
-                <Link
-                  to="/architects/$slug"
-                  params={{ slug: a.slug }}
-                  className="group block"
-                >
+                <Link to="/architects/$slug" params={{ slug: a.slug }} className="group block">
                   <div className="media-zoom aspect-square bg-secondary">
                     <img
                       src={a.portrait}
@@ -258,13 +250,14 @@ function Home() {
         <div className="mt-10 grid gap-x-6 gap-y-10 sm:grid-cols-3">
           {articles.slice(1, 4).map((a, i) => (
             <Reveal key={a.slug} delay={i * 80}>
-              <Link
-                to="/journal/$slug"
-                params={{ slug: a.slug }}
-                className="group block"
-              >
+              <Link to="/journal/$slug" params={{ slug: a.slug }} className="group block">
                 <div className="media-zoom aspect-16/10 bg-secondary">
-                  <img src={a.cover} alt={a.title} loading="lazy" className="size-full object-cover" />
+                  <img
+                    src={a.cover}
+                    alt={a.title}
+                    loading="lazy"
+                    className="size-full object-cover"
+                  />
                 </div>
                 <p className="mt-4 eyebrow">
                   {a.category} · {a.readTime}

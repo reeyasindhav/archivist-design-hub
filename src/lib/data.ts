@@ -52,6 +52,15 @@ export type Architect = {
   followers: string;
 };
 
+export type Collection = {
+  name: string;
+  slug: string;
+  count: number;
+  cover: string;
+  description: string;
+  buildings: string[];
+};
+
 export type Article = {
   slug: string;
   title: string;
@@ -144,8 +153,16 @@ export const architects: Architect[] = [
   },
 ];
 
-const architectByName = (slug: string) =>
-  architects.find((a) => a.slug === slug)!.name;
+export const getBuilding = (slug: string) => buildings.find((b) => b.slug === slug);
+export const getArchitect = (slug: string) => architects.find((a) => a.slug === slug);
+export const getCollection = (slug: string) => collections.find((c) => c.slug === slug);
+export const buildingsByArchitect = (slug: string) =>
+  buildings.filter((b) => b.architectSlug === slug);
+
+const architectByName = (slug: string) => {
+  const found = architects.find((a) => a.slug === slug);
+  return found?.name ?? "Unknown architect";
+};
 
 export const buildings: Building[] = [
   {
@@ -165,8 +182,7 @@ export const buildings: Building[] = [
       u("1616486338812-3dadae4b4ace"),
       u("1502005229762-cf1b2da7c5d6"),
     ],
-    blurb:
-      "A quiet fortress of colour in Tacubaya where light is measured out room by room.",
+    blurb: "A quiet fortress of colour in Tacubaya where light is measured out room by room.",
     story: [
       "From the street, Casa Barragán refuses to perform. A flat plastered façade, one small window, a service door — the architecture begins only once you are inside.",
       "The plan folds around a double-height living room whose vast window frames an overgrown garden. Circulation is deliberately slow: low ceilings compress before releasing into light, stairs float without handrails, and pigment does the work that ornament usually does.",
@@ -204,8 +220,13 @@ export const buildings: Building[] = [
     typology: "Country house",
     materials: ["Reinforced concrete", "Sandstone", "Steel"],
     hero: u("1580587771525-78b9dba3b914", 1600),
-    gallery: [u("1512917774080-9991f1c4c750"), u("1564013799919-ab600027ffc6"), u("1416331108676-a22ccb276e35")],
-    blurb: "Cantilevered terraces stacked over a waterfall — a house that refuses a view in favour of immersion.",
+    gallery: [
+      u("1512917774080-9991f1c4c750"),
+      u("1564013799919-ab600027ffc6"),
+      u("1416331108676-a22ccb276e35"),
+    ],
+    blurb:
+      "Cantilevered terraces stacked over a waterfall — a house that refuses a view in favour of immersion.",
     story: [
       "Wright placed the house on the falls rather than opposite them, so the water is heard everywhere and seen almost nowhere.",
       "Trays of reinforced concrete cantilever from a central stone core, anchored by boulders left in place beneath the living room hearth.",
@@ -242,7 +263,11 @@ export const buildings: Building[] = [
     typology: "Research campus",
     materials: ["Board-formed concrete", "Teak", "Travertine"],
     hero: u("1497366216548-37526070297c", 1600),
-    gallery: [u("1497366754035-f200968a6e72"), u("1503387762-592deb58ef4e"), u("1524758631624-e2822e304c36")],
+    gallery: [
+      u("1497366754035-f200968a6e72"),
+      u("1503387762-592deb58ef4e"),
+      u("1524758631624-e2822e304c36"),
+    ],
     blurb: "Two laboratory blocks split by a travertine court aimed at the Pacific horizon.",
     story: [
       "Jonas Salk asked for a building he could invite Picasso to. Kahn answered with a plaza he initially planned as a garden, then emptied on Luis Barragán's advice.",
@@ -280,7 +305,11 @@ export const buildings: Building[] = [
     typology: "House & clinic",
     materials: ["Glass block", "Steel", "Rubber floor"],
     hero: u("1524758631624-e2822e304c36", 1600),
-    gallery: [u("1554995207-c18c203602cb"), u("1502672260266-1c1ef2d93688"), u("1523217582562-09d0def993a6")],
+    gallery: [
+      u("1554995207-c18c203602cb"),
+      u("1502672260266-1c1ef2d93688"),
+      u("1523217582562-09d0def993a6"),
+    ],
     blurb: "A glass-block courtyard house slid beneath an existing Parisian apartment.",
     story: [
       "The top-floor tenant refused to move, so Chareau built the house underneath her — jacking a steel frame into the courtyard shell.",
@@ -318,7 +347,11 @@ export const buildings: Building[] = [
     typology: "Thermal baths",
     materials: ["Valser quartzite", "Concrete", "Brass"],
     hero: u("1518005020951-eccb494ad742", 1600),
-    gallery: [u("1470723710355-95304d8aece4"), u("1486406146926-c627a92ad1ab"), u("1449157291145-7efd050a4d0e")],
+    gallery: [
+      u("1470723710355-95304d8aece4"),
+      u("1486406146926-c627a92ad1ab"),
+      u("1449157291145-7efd050a4d0e"),
+    ],
     blurb: "60,000 slabs of local quartzite stacked into a bathing cave cut into the hillside.",
     story: [
       "Zumthor described the brief as building a quarry that had always been there — the baths are entered through the mountain, not the valley.",
@@ -356,7 +389,11 @@ export const buildings: Building[] = [
     typology: "Urban house",
     materials: ["Plaster", "Jacaranda", "Water"],
     hero: u("1512917774080-9991f1c4c750", 1600),
-    gallery: [u("1600607687939-ce8a6c25118c"), u("1600566753086-00f18fb6b3ea"), u("1502005229762-cf1b2da7c5d6")],
+    gallery: [
+      u("1600607687939-ce8a6c25118c"),
+      u("1600566753086-00f18fb6b3ea"),
+      u("1502005229762-cf1b2da7c5d6"),
+    ],
     blurb: "Barragán's last work: a yellow corridor that ends in a pool room lit blood-red.",
     story: [
       "The clients asked only that a jacaranda tree in the courtyard survive. The plan bends around it.",
@@ -394,7 +431,11 @@ export const buildings: Building[] = [
     typology: "Museum",
     materials: ["Curved glass", "Steel", "Terrazzo"],
     hero: u("1493397212122-2b85dda8106b", 1600),
-    gallery: [u("1487958449943-2429e8be8625"), u("1449157291145-7efd050a4d0e"), u("1481253127861-534498168948")],
+    gallery: [
+      u("1487958449943-2429e8be8625"),
+      u("1449157291145-7efd050a4d0e"),
+      u("1481253127861-534498168948"),
+    ],
     blurb: "A single-storey field of curved glass rooms where every wall shows the next.",
     story: [
       "SANAA wrapped the entire programme in glass, then floated interior rooms as separate glass volumes with cavities between them.",
@@ -432,7 +473,11 @@ export const buildings: Building[] = [
     typology: "Mixed-use tower",
     materials: ["Concrete", "Terracotta render", "Glass"],
     hero: u("1486406146926-c627a92ad1ab", 1600),
-    gallery: [u("1470723710355-95304d8aece4"), u("1487958449943-2429e8be8625"), u("1481253127861-534498168948")],
+    gallery: [
+      u("1470723710355-95304d8aece4"),
+      u("1487958449943-2429e8be8625"),
+      u("1481253127861-534498168948"),
+    ],
     blurb: "A medieval watchtower rebuilt in post-war concrete, flaring outward at the crown.",
     story: [
       "The mushroom profile is structural theatre: apartments demanded larger floorplates than the offices below, so the tower simply grew.",
@@ -470,7 +515,11 @@ export const buildings: Building[] = [
     typology: "Monastery",
     materials: ["Raw concrete", "Coloured glass", "Steel"],
     hero: u("1470723710355-95304d8aece4", 1600),
-    gallery: [u("1518005020951-eccb494ad742"), u("1486406146926-c627a92ad1ab"), u("1449157291145-7efd050a4d0e")],
+    gallery: [
+      u("1518005020951-eccb494ad742"),
+      u("1486406146926-c627a92ad1ab"),
+      u("1449157291145-7efd050a4d0e"),
+    ],
     blurb: "A hundred concrete cells hung above a sloping meadow around an empty cloister.",
     story: [
       "The building starts at the roof: the horizontal datum is set at the hilltop and the structure drops legs to meet the falling ground.",
@@ -554,15 +603,50 @@ export const articles: Article[] = [
 ];
 
 export const collections = [
-  { name: "Concrete devotion", count: 18, cover: u("1470723710355-95304d8aece4", 800) },
-  { name: "Light wells", count: 24, cover: u("1524758631624-e2822e304c36", 800) },
-  { name: "Warm minimalism", count: 31, cover: u("1616486338812-3dadae4b4ace", 800) },
-  { name: "Glass skins", count: 12, cover: u("1493397212122-2b85dda8106b", 800) },
+  {
+    name: "Concrete devotion",
+    slug: "concrete-devotion",
+    count: 18,
+    cover: u("1470723710355-95304d8aece4", 800),
+    description:
+      "Buildings that treat concrete as a spiritual material — where mass, texture and light converge into something接近 monolithic and tender at once.",
+    buildings: [
+      "salk-institute",
+      "concrete-monastery",
+      "torre-velasca",
+      "the-language-of-concrete",
+    ],
+  },
+  {
+    name: "Light wells",
+    slug: "light-wells",
+    count: 24,
+    cover: u("1524758631624-e2822e304c36", 800),
+    description:
+      "Architecture orchestrated around the capture and distribution of natural light — from courtyards to atriums and light shelves.",
+    buildings: ["casa-barragan", "maison-de-verre", "glass-pavilion-toledo", "therme-vals"],
+  },
+  {
+    name: "Warm minimalism",
+    slug: "warm-minimalism",
+    count: 31,
+    cover: u("1616486338812-3dadae4b4ace", 800),
+    description:
+      "Reduced forms enriched by natural materials, craft details and a careful balance between restraint and warmth.",
+    buildings: ["casa-gilardi", "fallingwater", "plans-that-teach", "colour-as-structure"],
+  },
+  {
+    name: "Glass skins",
+    slug: "glass-skins",
+    count: 12,
+    cover: u("1493397212122-2b85dda8106b", 800),
+    description:
+      "Transparent and translucent envelopes that dissolve the boundary between interior and exterior, city and sky.",
+    buildings: [
+      "maison-de-verre",
+      "glass-pavilion-toledo",
+      "small-spaces-long-lives",
+      "casa-barragan",
+    ],
+  },
 ];
-
-export const getBuilding = (slug: string) =>
-  buildings.find((b) => b.slug === slug);
-export const getArchitect = (slug: string) =>
-  architects.find((a) => a.slug === slug);
-export const buildingsByArchitect = (slug: string) =>
-  buildings.filter((b) => b.architectSlug === slug);

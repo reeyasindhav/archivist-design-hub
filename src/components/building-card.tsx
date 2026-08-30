@@ -4,24 +4,14 @@ import type { Building } from "@/lib/data";
 import { useAuth } from "@/lib/auth";
 import { cn } from "@/lib/utils";
 
-export function BuildingCard({
-  building,
-  index,
-}: {
-  building: Building;
-  index: number;
-}) {
+export function BuildingCard({ building, index }: { building: Building; index: number }) {
   const { isSaved, toggleSaved } = useAuth();
   const saved = isSaved(building.slug);
 
   return (
     <article className="group">
       <div className="media-zoom relative aspect-4/3 bg-secondary">
-        <Link
-          to="/buildings/$slug"
-          params={{ slug: building.slug }}
-          aria-label={building.name}
-        >
+        <Link to="/buildings/$slug" params={{ slug: building.slug }} aria-label={building.name}>
           <img
             src={building.hero}
             alt={`${building.name} by ${building.architect}`}

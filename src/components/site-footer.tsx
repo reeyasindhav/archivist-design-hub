@@ -4,39 +4,50 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-surface">
       <div className="mx-auto max-w-[1400px] px-5 py-14 lg:px-10">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
-          <div>
+        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+          <div className="space-y-6">
             <p className="font-display text-3xl leading-tight">
               A living archive
               <br />
               of space.
             </p>
-            <p className="mt-4 max-w-xs text-sm text-ink-soft">
-              Archiquest catalogues iconic buildings, interiors and plans — and the
-              people who drew them.
+            <p className="max-w-xs text-sm text-ink-soft">
+              Archiquest catalogues iconic buildings, interiors and plans — and the people who drew
+              them.
             </p>
+            <div>
+              <p className="eyebrow mb-3">Stay curious</p>
+              <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
+                <input
+                  type="email"
+                  placeholder="you@example.com"
+                  className="flex-1 rounded-md border border-border bg-transparent px-3 py-2 text-sm outline-none focus:border-foreground/40"
+                />
+                <button
+                  type="submit"
+                  className="rounded-md bg-foreground px-4 py-2 text-xs font-semibold tracking-widest uppercase text-background transition-colors hover:bg-foreground/90"
+                >
+                  Subscribe
+                </button>
+              </form>
+            </div>
           </div>
           <FooterCol
-            title="Explore"
+            title="Browse"
             links={[
               { to: "/buildings", label: "All works" },
+              { to: "/collections", label: "Collections" },
               { to: "/architects", label: "Architects" },
               { to: "/journal", label: "Journal" },
             ]}
           />
           <FooterCol
-            title="Platform"
+            title="Company"
             links={[
               { to: "/about", label: "About" },
-              { to: "/dashboard", label: "Dashboard" },
-              { to: "/submit", label: "Submit a work" },
-            ]}
-          />
-          <FooterCol
-            title="Account"
-            links={[
-              { to: "/login", label: "Sign in" },
-              { to: "/signup", label: "Create account" },
+              { to: "/contact", label: "Contact" },
+              { to: "/terms", label: "Terms" },
+              { to: "/privacy", label: "Privacy" },
             ]}
           />
         </div>
@@ -50,13 +61,7 @@ export function SiteFooter() {
   );
 }
 
-function FooterCol({
-  title,
-  links,
-}: {
-  title: string;
-  links: { to: string; label: string }[];
-}) {
+function FooterCol({ title, links }: { title: string; links: { to: string; label: string }[] }) {
   return (
     <div>
       <p className="eyebrow">{title}</p>

@@ -51,18 +51,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setReady(true);
   }, []);
 
-  const signIn = useCallback(
-    (email: string, name?: string, role: User["role"] = "enthusiast") => {
-      const next: User = {
-        email,
-        name: name?.trim() || (email.split("@")[0] ?? "Guest").replace(/[._-]/g, " "),
-        role,
-      };
-      setUser(next);
-      localStorage.setItem(USER_KEY, JSON.stringify(next));
-    },
-    [],
-  );
+  const signIn = useCallback((email: string, name?: string, role: User["role"] = "enthusiast") => {
+    const next: User = {
+      email,
+      name: name?.trim() || (email.split("@")[0] ?? "Guest").replace(/[._-]/g, " "),
+      role,
+    };
+    setUser(next);
+    localStorage.setItem(USER_KEY, JSON.stringify(next));
+  }, []);
 
   const signOut = useCallback(() => {
     setUser(null);
@@ -71,9 +68,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const toggleSaved = useCallback((slug: string) => {
     setSaved((prev) => {
-      const next = prev.includes(slug)
-        ? prev.filter((s) => s !== slug)
-        : [...prev, slug];
+      const next = prev.includes(slug) ? prev.filter((s) => s !== slug) : [...prev, slug];
       localStorage.setItem(SAVED_KEY, JSON.stringify(next));
       return next;
     });

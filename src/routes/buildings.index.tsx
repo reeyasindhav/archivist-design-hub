@@ -45,13 +45,15 @@ function BuildingsIndex() {
     if (query.trim()) {
       const q = query.toLowerCase();
       out = out.filter((b) =>
-        `${b.name} ${b.architect} ${b.city} ${b.country} ${b.typology}`
-          .toLowerCase()
-          .includes(q),
+        `${b.name} ${b.architect} ${b.city} ${b.country} ${b.typology}`.toLowerCase().includes(q),
       );
     }
     return [...out].sort((a, b) =>
-      sort === "A–Z" ? a.name.localeCompare(b.name) : sort === "Oldest first" ? a.year - b.year : b.year - a.year,
+      sort === "A–Z"
+        ? a.name.localeCompare(b.name)
+        : sort === "Oldest first"
+          ? a.year - b.year
+          : b.year - a.year,
     );
   }, [era, material, query, sort]);
 
@@ -134,7 +136,9 @@ function BuildingsIndex() {
               onClick={() => setMaterial(material === m ? null : m)}
               className={cn(
                 "border border-border px-2.5 py-1 text-[11px] tracking-[0.1em] uppercase transition-colors",
-                material === m ? "border-accent bg-accent text-accent-foreground" : "hover:bg-secondary",
+                material === m
+                  ? "border-accent bg-accent text-accent-foreground"
+                  : "hover:bg-secondary",
               )}
             >
               {m}
